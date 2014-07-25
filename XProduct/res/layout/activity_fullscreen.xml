@@ -1,0 +1,21 @@
+<com.example.xproduct.util.BidirSlidingLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/xproduct_content"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <RelativeLayout
+        android:id="@+id/left_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:visibility="invisible" >
+    </RelativeLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/contentList"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@android:color/white" />
+
+</com.example.xproduct.util.BidirSlidingLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/orange"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="170dp" >
+
+        <ImageView
+            android:id="@+id/add"
+            android:layout_width="59dp"
+            android:layout_height="59dp"
+            android:layout_centerHorizontal="true"
+            android:background="@color/blue" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/dial_ll"
+        style="@style/layout_margin_ww"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:weightSum="2" >
+
+        <com.example.xproduct.view.PMDialView
+            android:id="@+id/pm_dialv"
+            style="@style/layout_margin_0w"
+            android:layout_weight="1" />
+
+        <com.example.xproduct.view.HCHODialView
+            android:id="@+id/hcho_dialv"
+            style="@style/layout_margin_0w"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="170dp" >
+    </RelativeLayout>
+
+</LinearLayout>
