@@ -71,7 +71,7 @@ public class FragmentUtil {
 				break;
 			}
 			FragmentTransaction ft1 = getFragmentManager().beginTransaction();
-			ft1.add(R.id.pagers_fragment, ft);
+			ft1.replace(R.id.pagers_fragment, ft);
 			ft1.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
 			ft1.commitAllowingStateLoss();
 			return v;

@@ -3,15 +3,12 @@ package com.example.xproduct.view;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.View;
-import android.widget.LinearLayout;
 
-import com.hp.box.xproduct.R;
-import com.jjoe64.graphview.BarGraphView;
 import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.GraphViewStyle;
-import com.jjoe64.graphview.LineGraphView;
 import com.jjoe64.graphview.GraphView.GraphViewData;
 import com.jjoe64.graphview.GraphViewSeries;
+import com.jjoe64.graphview.GraphViewStyle;
+import com.jjoe64.graphview.LineGraphView;
 
 public class SimpleGraph {
 

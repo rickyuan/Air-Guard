@@ -6,5 +6,11 @@
     <color name="translucence">#4cffffff</color>
     <color name="white">#ffffffff</color>
     <color name="black">#616161</color>
+    <color name="pm_cl_1">#139ff4</color>
+    <color name="pm_cl_2">#10e1f3</color>
+    <color name="pm_cl_3">#34f5d4</color>
+    <color name="hcho_cl_1">#df2e2e</color>
+    <color name="hcho_cl_2">#f98931</color>
+    <color name="hcho_cl_3">#ffc829</color>
 
 </resources>

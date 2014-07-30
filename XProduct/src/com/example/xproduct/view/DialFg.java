@@ -22,11 +22,6 @@ public class DialFg {
 	private LinearLayout dial_ll;
 	private boolean flag = true;
 
-	public static DialFg newInstance() {
-		DialFg fg = new DialFg();
-		return fg;
-	}
-
 	public View getView(Context context) {
 		this.context = context;
 		initView();
@@ -34,23 +29,23 @@ public class DialFg {
 	}
 
 	private void setOnclickListener() {
-		add.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				pm_dialv.setDialDegrees(num += 30);
-				pm_dialv.setPercentageText(num + "%");
-				hcho_dialv.setDialDegrees(num1 -= 30);
-			}
-		});
+//		add.setOnClickListener(new OnClickListener() {
+//
+//			@Override
+//			public void onClick(View v) {
+//				// TODO Auto-generated method stub
+//				pm_dialv.setDialDegrees(num += 30);
+//				pm_dialv.setPercentageText(num + "%");
+//				hcho_dialv.setDialDegrees(num1 -= 30);
+//			}
+//		});
 	}
 
 	private void findViewById() {
 		view = View.inflate(context, R.layout.dil_view, null);
 		pm_dialv = (PMDialView) view.findViewById(R.id.pm_dialv);
 		hcho_dialv = (HCHODialView) view.findViewById(R.id.hcho_dialv);
-		add = (ImageView) view.findViewById(R.id.add);
+		// add = (ImageView) view.findViewById(R.id.add);
 		// dial_ll = (LinearLayout) view.findViewById(R.id.dial_ll);
 	}
 

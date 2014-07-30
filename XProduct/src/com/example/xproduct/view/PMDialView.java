@@ -1,5 +1,6 @@
 package com.example.xproduct.view;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -8,22 +9,24 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
-
 import com.hp.box.xproduct.R;
 
+@SuppressLint("ResourceAsColor")
 public class PMDialView extends SurfaceView implements Callback {
 	private SurfaceHolder holder;
 	private Paint paint;
+	private Paint paint2;
 	private Canvas canvas;
 	private int screenW, screenH, imgeW, imgeH, pointImgW, pointImgH;
 	private float scaleX = 1;
-	private Bitmap leftDialBmp, leftPointerBmp;
-	private int leftDialX, leftDialY, leftPointerX, leftPointerY, textBgX,
-			textBgY;
+	private Bitmap leftDialBmp;// , leftPointerBmp;
+	private int leftDialX, leftDialY, leftPointerX, leftPointerY;// , textBgX,
+	// textBgY;
 	private Rect bgRect;
 	private Bitmap textBg;
 	public int dialDegrees;
@@ -58,10 +61,19 @@ public class PMDialView extends SurfaceView implements Callback {
 	public void drawLeftDial() {
 		canvas.drawBitmap(leftDialBmp, leftDialX, leftDialY, paint);
 		canvas.save();
-		canvas.rotate(dialDegrees,
-				leftPointerX + leftPointerBmp.getWidth() / 2, leftPointerY
-						+ leftPointerBmp.getHeight() / 2);
-		canvas.drawBitmap(leftPointerBmp, leftPointerX, leftPointerY, paint);
+		paint.setStyle(Paint.Style.STROKE);
+		paint.setColor(Color.RED);// , R.color.pm_cl_2,
+		// R.color.pm_cl_3
+		paint.setStrokeWidth(11);
+		// 定义一个矩形
+		RectF rf1 = new RectF(leftDialX + 5, leftDialY + 5, leftDialX + imgeW,
+				leftDialY + imgeW);
+		canvas.drawArc(rf1, -105, 360, false, paint);
+		// canvas.drawCircle(leftPointerX, leftPointerY, imgeW / 2 - 7, paint);
+		// canvas.rotate(dialDegrees,
+		// leftPointerX + leftPointerBmp.getWidth() / 2, leftPointerY
+		// + leftPointerBmp.getHeight() / 2);
+		// canvas.drawBitmap(leftDialBmp, leftPointerX, leftPointerY, paint);
 		canvas.restore();
 	}
 
@@ -71,27 +83,29 @@ public class PMDialView extends SurfaceView implements Callback {
 		textBg = BitmapFactory.decodeResource(getResources(),
 				R.drawable.black_box);
 		leftDialBmp = BitmapFactory.decodeResource(getResources(),
-				R.drawable.signsec_dashboard);
-		leftPointerBmp = BitmapFactory.decodeResource(getResources(),
-				R.drawable.signsec_pointer);
+				R.drawable.signsec_dashboard_1);
+		// leftPointerBmp = BitmapFactory.decodeResource(getResources(),
+		// R.drawable.signsec_dashboard_1);
 		imgeW = leftDialBmp.getWidth();
 		imgeH = leftDialBmp.getHeight();
-		pointImgW = leftPointerBmp.getWidth();
-		pointImgH = leftPointerBmp.getHeight();
+		// pointImgW = leftPointerBmp.getWidth();
+		// pointImgH = leftPointerBmp.getHeight();
 		screenW = getWidth();
 		screenH = getHeight();
 		bgRect = new Rect(0, 0, screenW / 2, (int) (screenH * 0.25));
 		leftDialX = (screenW / 2 - imgeW) / 2;
 		leftDialX = leftDialX > 0 ? leftDialX : 30;
 		leftDialY = 50;
-		leftPointerX = leftDialBmp.getWidth() / 2 - leftPointerBmp.getWidth()
-				/ 2 + leftDialX;
-		leftPointerY = 50;
-
-		textBgX = leftDialX + leftDialBmp.getWidth() / 2 - textBg.getWidth()
-				/ 2;
-		textBgY = leftDialY + leftDialBmp.getHeight() / 2 - textBg.getHeight()
-				/ 2 - 50;
+		// leftPointerX = leftDialBmp.getWidth() / 2 - leftPointerBmp.getWidth()
+		// / 2 + leftDialX;
+		// leftPointerY = 50;
+		// leftPointerX = imgeW / 2 + leftDialX;
+		// leftPointerY = 50 + imgeH / 2 + 5;
+		// textBgX = leftDialX + leftDialBmp.getWidth() / 2 - textBg.getWidth()
+		// / 2;
+		// textBgY = leftDialY + leftDialBmp.getHeight() / 2 -
+		// textBg.getHeight()
+		// / 2 - 50;
 		myDraw();
 		flag = true;
 		// Thread thread = new Thread(this);
@@ -120,8 +134,8 @@ public class PMDialView extends SurfaceView implements Callback {
 		matrix.postScale(scaleX, scaleX);
 		leftDialBmp = Bitmap.createBitmap(leftDialBmp, 0, 0, imgeW, imgeH - 1,
 				matrix, true);
-		leftPointerBmp = Bitmap.createBitmap(leftPointerBmp, 0, 0, pointImgW,
-				pointImgH, matrix, true);
+		// leftPointerBmp = Bitmap.createBitmap(leftPointerBmp, 0, 0, pointImgW,
+		// pointImgH, matrix, true);
 	}
 
 	public void surfaceChanged(SurfaceHolder holder, int format, int width,

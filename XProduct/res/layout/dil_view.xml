@@ -2,19 +2,53 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/orange"
     android:orientation="vertical" >
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="170dp" >
+        android:layout_height="wrap_content"
+        android:layout_gravity="top" >
 
         <ImageView
-            android:id="@+id/add"
-            android:layout_width="59dp"
-            android:layout_height="59dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:background="@color/blue" />
+            android:background="@drawable/dial_top_bg"
+            android:scaleType="fitStart" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:background="@color/translucence" >
+
+            <ImageView
+                android:id="@+id/dial_left_bt_iv"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="7dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/dial_top_left_bt_iv" />
+
+            <ImageView
+                android:id="@+id/dial_setting_bt_iv"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginRight="7dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/dial_top_setting_bt_iv" />
+
+            <ImageView
+                android:id="@+id/dial_share_bt_iv"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="7dp"
+                android:layout_toLeftOf="@+id/dial_setting_bt_iv"
+                android:scaleType="fitCenter"
+                android:src="@drawable/dial_top_share_bt_iv" />
+        </RelativeLayout>
     </RelativeLayout>
 
     <LinearLayout

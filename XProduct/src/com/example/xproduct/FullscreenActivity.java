@@ -25,7 +25,6 @@ import com.example.xproduct.view.CldFg;
 import com.example.xproduct.view.CvsFg;
 import com.example.xproduct.view.DialFg;
 import com.example.xproduct.view.LeftMenu;
-import com.example.xproduct.view.SimpleGraph;
 import com.hp.box.xproduct.R;
 
 /**
@@ -40,13 +39,14 @@ public class FullscreenActivity extends FragmentActivity implements
 	private String TAG = "FullscreenActivity";
 	private Context context;
 	/**
-	 * Ë«Ïò»¬¶¯²Ëµ¥²¼¾Ö
+	 * Ë«ï¿½ò»¬¶ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	private BidirSlidingLayout xproduct_content;
 	public ViewPager contentList;
 	private RelativeLayout left_menu;
 	private ContentAdapter1 vpAdapter;
 	private ArrayList<View> mList;
+	// private ArrayList<Object> mList;
 	public static int width;
 	public static int CURRENTPAGEITEM = 0;
 
