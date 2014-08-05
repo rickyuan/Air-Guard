@@ -45,6 +45,9 @@ public class GraphViewSeries {
 		public void setValueDependentColor(ValueDependentColor valueDependentColor) {
 			this.valueDependentColor = valueDependentColor;
 		}
+		public void setSeriesColor(int color){
+			this.color = color;
+		}
 	}
 
 	final String description;

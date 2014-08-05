@@ -49,8 +49,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int ic_launcher=0x7f02000a;
         public static final int icon=0x7f02000b;
         public static final int signsec_dashboard=0x7f02000c;
-        public static final int signsec_dashboard_1=0x7f02000d;
-        public static final int signsec_pointer=0x7f02000e;
+        public static final int signsec_dashboard_01=0x7f02000d;
+        public static final int signsec_dashboard_small_bg=0x7f02000e;
+        public static final int signsec_pointer=0x7f02000f;
+        public static final int signsec_pointer_01=0x7f020010;
+        public static final int signsec_pointer_02=0x7f020011;
     }
     public static final class id {
         public static final int add_dv_ll=0x7f080016;
@@ -149,7 +152,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name com.hp.box.xproduct:buttonBarButtonStyle
+          @attr name android:buttonBarButtonStyle
         */
         public static final int ButtonBarContainerTheme_buttonBarButtonStyle = 1;
         /**
@@ -159,7 +162,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name com.hp.box.xproduct:buttonBarStyle
+          @attr name android:buttonBarStyle
         */
         public static final int ButtonBarContainerTheme_buttonBarStyle = 0;
     };

@@ -20,18 +20,15 @@ import com.hp.box.xproduct.R;
 public class PMDialView extends SurfaceView implements Callback {
 	private SurfaceHolder holder;
 	private Paint paint;
-	private Paint paint2;
 	private Canvas canvas;
-	private int screenW, screenH, imgeW, imgeH, pointImgW, pointImgH;
+	private int screenW, screenH, imgeW, imgeH;
 	private float scaleX = 1;
-	private Bitmap leftDialBmp;// , leftPointerBmp;
-	private int leftDialX, leftDialY, leftPointerX, leftPointerY;// , textBgX,
-	// textBgY;
+	private Bitmap leftDialBmp;
+	private int leftDialX, leftDialY;
 	private Rect bgRect;
 	private Bitmap textBg;
-	public int dialDegrees;
+	public double dialDegrees = 0.78;
 	private String percentageText = "";
-	private int percentageX, percentageY;
 
 	public PMDialView(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -39,8 +36,6 @@ public class PMDialView extends SurfaceView implements Callback {
 		holder.addCallback(this);
 		paint = new Paint();
 		paint.setAntiAlias(true);
-		paint.setColor(Color.BLACK);
-		paint.setColor(Color.argb(255, 207, 60, 11));
 		paint.setTextSize(22);
 		setFocusable(true);
 		setFocusableInTouchMode(true);
@@ -61,20 +56,47 @@ public class PMDialView extends SurfaceView implements Callback {
 	public void drawLeftDial() {
 		canvas.drawBitmap(leftDialBmp, leftDialX, leftDialY, paint);
 		canvas.save();
-		paint.setStyle(Paint.Style.STROKE);
-		paint.setColor(Color.RED);// , R.color.pm_cl_2,
-		// R.color.pm_cl_3
-		paint.setStrokeWidth(11);
-		// 定义一个矩形
-		RectF rf1 = new RectF(leftDialX + 5, leftDialY + 5, leftDialX + imgeW,
-				leftDialY + imgeW);
-		canvas.drawArc(rf1, -105, 360, false, paint);
-		// canvas.drawCircle(leftPointerX, leftPointerY, imgeW / 2 - 7, paint);
-		// canvas.rotate(dialDegrees,
-		// leftPointerX + leftPointerBmp.getWidth() / 2, leftPointerY
-		// + leftPointerBmp.getHeight() / 2);
-		// canvas.drawBitmap(leftDialBmp, leftPointerX, leftPointerY, paint);
+		setProgress();
 		canvas.restore();
+	}
+
+	private void setProgress() {
+		if (dialDegrees != 0) {
+			boolean is33125 = false;
+			boolean is6625 = false;
+			if (dialDegrees >= 0.33125) {
+				is33125 = true;
+				if (dialDegrees >= 0.6625) {
+					is6625 = true;
+				}
+			}
+			paint.setStyle(Paint.Style.STROKE);
+			paint.setStrokeWidth(11);
+			// 定义一个矩形
+			RectF rf1 = new RectF(leftDialX + 7, leftDialY + 7, leftDialX
+					+ imgeW - 7, leftDialY + imgeW - 7);
+			if (!is33125) {
+				paint.setColor(Color.argb(255, 19, 159, 244));
+				canvas.drawArc(rf1, 110, (int) (106 * dialDegrees), false,
+						paint);
+			} else {
+				if (!is6625) {
+					paint.setColor(Color.argb(255, 19, 159, 244));
+					canvas.drawArc(rf1, 110, 106, false, paint);
+					paint.setColor(Color.argb(255, 16, 225, 243));
+					canvas.drawArc(rf1, 216,
+							(int) (106 * (dialDegrees - 0.33125)), false, paint);
+				} else {
+					paint.setColor(Color.argb(255, 19, 159, 244));
+					canvas.drawArc(rf1, 110, 106, false, paint);
+					paint.setColor(Color.argb(255, 16, 225, 243));
+					canvas.drawArc(rf1, 216, 106, false, paint);
+					paint.setColor(Color.argb(255, 52, 245, 212));
+					canvas.drawArc(rf1, 322,
+							(int) (106 * (dialDegrees - 0.6625)), false, paint);
+				}
+			}
+		}
 	}
 
 	private boolean flag;
@@ -83,49 +105,18 @@ public class PMDialView extends SurfaceView implements Callback {
 		textBg = BitmapFactory.decodeResource(getResources(),
 				R.drawable.black_box);
 		leftDialBmp = BitmapFactory.decodeResource(getResources(),
-				R.drawable.signsec_dashboard_1);
-		// leftPointerBmp = BitmapFactory.decodeResource(getResources(),
-		// R.drawable.signsec_dashboard_1);
+				R.drawable.signsec_dashboard);
 		imgeW = leftDialBmp.getWidth();
 		imgeH = leftDialBmp.getHeight();
-		// pointImgW = leftPointerBmp.getWidth();
-		// pointImgH = leftPointerBmp.getHeight();
 		screenW = getWidth();
 		screenH = getHeight();
 		bgRect = new Rect(0, 0, screenW / 2, (int) (screenH * 0.25));
 		leftDialX = (screenW / 2 - imgeW) / 2;
 		leftDialX = leftDialX > 0 ? leftDialX : 30;
 		leftDialY = 50;
-		// leftPointerX = leftDialBmp.getWidth() / 2 - leftPointerBmp.getWidth()
-		// / 2 + leftDialX;
-		// leftPointerY = 50;
-		// leftPointerX = imgeW / 2 + leftDialX;
-		// leftPointerY = 50 + imgeH / 2 + 5;
-		// textBgX = leftDialX + leftDialBmp.getWidth() / 2 - textBg.getWidth()
-		// / 2;
-		// textBgY = leftDialY + leftDialBmp.getHeight() / 2 -
-		// textBg.getHeight()
-		// / 2 - 50;
 		myDraw();
 		flag = true;
-		// Thread thread = new Thread(this);
-		// thread.start();
 	}
-
-	// public void run() {
-	// while (flag) {
-	// long start = System.currentTimeMillis();
-	// myDraw();
-	// dialDegrees++;
-	// long end = System.currentTimeMillis();
-	// try {
-	// if (end - start < 50)
-	// Thread.sleep(50 - (end - start));
-	// } catch (Exception e) {
-	// e.printStackTrace();
-	// }
-	// }
-	// }
 
 	private void scaleBmp() {
 		int screenhfw = (screenW / 2);
@@ -134,8 +125,6 @@ public class PMDialView extends SurfaceView implements Callback {
 		matrix.postScale(scaleX, scaleX);
 		leftDialBmp = Bitmap.createBitmap(leftDialBmp, 0, 0, imgeW, imgeH - 1,
 				matrix, true);
-		// leftPointerBmp = Bitmap.createBitmap(leftPointerBmp, 0, 0, pointImgW,
-		// pointImgH, matrix, true);
 	}
 
 	public void surfaceChanged(SurfaceHolder holder, int format, int width,
@@ -146,11 +135,11 @@ public class PMDialView extends SurfaceView implements Callback {
 	public void surfaceDestroyed(SurfaceHolder holder) {
 	}
 
-	public int getDialDegrees() {
+	public double getDialDegrees() {
 		return dialDegrees;
 	}
 
-	public void setDialDegrees(int dialDegrees) {
+	public void setDialDegrees(double dialDegrees) {
 		this.dialDegrees = dialDegrees;
 		myDraw();
 	}

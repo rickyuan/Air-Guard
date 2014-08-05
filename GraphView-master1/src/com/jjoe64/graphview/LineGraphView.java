@@ -50,8 +50,8 @@ public class LineGraphView extends GraphView {
 		paintBackground.setColor(R.color.blue);
 	}
 
-	public LineGraphView(Context context, String title) {
-		super(context, title);
+	public LineGraphView(Context context) {
+		super(context);
 
 		paintBackground = new Paint();
 		paintBackground.setColor(Color.rgb(20, 40, 60));

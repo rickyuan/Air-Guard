@@ -26,8 +26,11 @@ int drawable dv_iv_bl_selected 0x7f020009
 int drawable ic_launcher 0x7f02000a
 int drawable icon 0x7f02000b
 int drawable signsec_dashboard 0x7f02000c
-int drawable signsec_dashboard_1 0x7f02000d
-int drawable signsec_pointer 0x7f02000e
+int drawable signsec_dashboard_01 0x7f02000d
+int drawable signsec_dashboard_small_bg 0x7f02000e
+int drawable signsec_pointer 0x7f02000f
+int drawable signsec_pointer_01 0x7f020010
+int drawable signsec_pointer_02 0x7f020011
 int id add_dv_ll 0x7f080016
 int id btn_advanced 0x7f08001c
 int id btn_customlabelformatter 0x7f080021

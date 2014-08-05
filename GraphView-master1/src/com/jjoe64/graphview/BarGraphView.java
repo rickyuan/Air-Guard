@@ -34,8 +34,8 @@ public class BarGraphView extends GraphView {
 		super(context, attrs);
 	}
 
-	public BarGraphView(Context context, String title) {
-		super(context, title);
+	public BarGraphView(Context context) {
+		super(context);
 	}
 
 	@Override
