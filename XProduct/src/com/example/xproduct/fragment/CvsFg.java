@@ -6,13 +6,16 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
+import com.example.xproduct.view.SimpleGraph;
 import com.hp.box.xproduct.R;
 
 public class CvsFg extends Fragment {
 
 	private Context context;
 	private View view;
+	private RelativeLayout cvs_rl;
 
 	public static CvsFg newInstance() {
 		CvsFg fg = new CvsFg();
@@ -46,6 +49,7 @@ public class CvsFg extends Fragment {
 
 	private void findViewById() {
 		view = View.inflate(context, R.layout.cvs_view, null);
+		cvs_rl = (RelativeLayout) view.findViewById(R.id.cvs_rl);
 	}
 
 	@Override
@@ -69,6 +73,7 @@ public class CvsFg extends Fragment {
 	private void initView() {
 		findViewById();
 		setOnclickListener();
+		cvs_rl.addView(new SimpleGraph(context).getView());
 	}
 
 }

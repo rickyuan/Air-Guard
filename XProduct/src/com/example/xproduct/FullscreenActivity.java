@@ -1,7 +1,5 @@
 package com.example.xproduct;
 
-import java.util.ArrayList;
-
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -17,13 +15,10 @@ import android.view.View.OnTouchListener;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 
-import com.example.xproduct.adapter.ContentAdapter1;
+import com.example.xproduct.adapter.ContentAdapter;
 import com.example.xproduct.aplication.XProductData;
 import com.example.xproduct.util.BidirSlidingLayout;
 import com.example.xproduct.util.Utils;
-import com.example.xproduct.view.CldFg;
-import com.example.xproduct.view.CvsFg;
-import com.example.xproduct.view.DialFg;
 import com.example.xproduct.view.LeftMenu;
 import com.hp.box.xproduct.R;
 
@@ -44,9 +39,7 @@ public class FullscreenActivity extends FragmentActivity implements
 	private BidirSlidingLayout xproduct_content;
 	public ViewPager contentList;
 	private RelativeLayout left_menu;
-	private ContentAdapter1 vpAdapter;
-	private ArrayList<View> mList;
-	// private ArrayList<Object> mList;
+	private ContentAdapter vpAdapter;
 	public static int width;
 	public static int CURRENTPAGEITEM = 0;
 
@@ -74,11 +67,7 @@ public class FullscreenActivity extends FragmentActivity implements
 		left_menu.addView(new LeftMenu(this).getView());
 		left_menu.setLayoutParams(new RelativeLayout.LayoutParams(
 				XProductData.LEFTVIEWWIDTH, LayoutParams.FILL_PARENT));
-		mList = new ArrayList<View>();
-		mList.add(new DialFg().getView(context));
-		mList.add(new CvsFg().getView(context));
-		mList.add(new CldFg().getView(context));
-		vpAdapter = new ContentAdapter1(getSupportFragmentManager(), mList);
+		vpAdapter = new ContentAdapter(getSupportFragmentManager());
 		contentList.setOffscreenPageLimit(0);
 		contentList.setAdapter(vpAdapter);
 		xproduct_content.setScrollEvent(contentList);

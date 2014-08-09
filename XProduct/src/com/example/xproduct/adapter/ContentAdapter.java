@@ -1,54 +1,67 @@
 package com.example.xproduct.adapter;
 
-import java.util.List;
-
-import com.example.xproduct.fragment.FragmentUtil.ArrayFragment;
+import java.util.ArrayList;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class ContentAdapter extends FragmentStatePagerAdapter {
-	// List<Object> mList;
+import com.example.xproduct.fragment.FragmentUtil.ArrayFragment;
 
-	public ContentAdapter(FragmentManager fm, List<Object> mList) {
-		super(fm);
-		// this.mList = mList;
+public class ContentAdapter extends PagerAdapter {
+	private FragmentManager mFragmentManager;
+
+	public ContentAdapter(FragmentManager pFragmentManager) {
+		this.mFragmentManager = pFragmentManager;
+		ArrayFragment.getFgList();
+	}
+
+	public ArrayList<Fragment> getData() {
+		return ArrayFragment.mList;
 	}
 
 	@Override
 	public int getCount() {
-		return 3;
+		return ArrayFragment.mList.size();
+	}
+
+	public Fragment getItem(int position) {
+		return ArrayFragment.mList.get(position);
 	}
 
 	@Override
-	public boolean isViewFromObject(View arg0, Object arg1) {
-		// TODO Auto-generated method stub
-		return arg0 == arg1;
-	}
-
-	@Override
-	public Fragment getItem(int arg0) {
-		// TODO Auto-generated method stub
-		System.out.print("getItem arg0 = " + arg0);
-		// return (Fragment) mList.get(arg0);
-		return ArrayFragment.newInstance(arg0);
+	public boolean isViewFromObject(View view, Object o) {
+		return view == o;
 	}
 
 	@Override
 	public void destroyItem(ViewGroup container, int position, Object object) {
-		// TODO Auto-generated method stub
-		super.destroyItem(container, position, object);
+		// mFragments.get(position).onPause();
+		ArrayFragment.mList.get(position).setUserVisibleHint(false);
+		container.removeView(ArrayFragment.mList.get(position).getView());
 	}
 
 	@Override
-	public Object instantiateItem(ViewGroup arg0, int arg1) {
-		// TODO Auto-generated method stub
-		System.out.print("instantiateItem arg1 = " + arg1);
-		// return mList.get(arg1);
-		return ArrayFragment.newInstance(arg1);
+	public Object instantiateItem(ViewGroup container, int position) {
+		Fragment fragment = ArrayFragment.mList.get(position);
+		if (!fragment.isAdded()) {
+			FragmentTransaction ft = mFragmentManager.beginTransaction();
+			ft.add(fragment, fragment.getClass().getSimpleName());
+			ft.commit();
+			mFragmentManager.executePendingTransactions();
+		} else {
+			// fragment.onResume();
+		}
+		fragment.setUserVisibleHint(true);
+
+		if (fragment.getView().getParent() == null) {
+			container.addView(fragment.getView());
+		}
+
+		return fragment.getView();
 	}
 
 }

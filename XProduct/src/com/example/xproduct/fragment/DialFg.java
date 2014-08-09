@@ -1,9 +1,13 @@
 package com.example.xproduct.fragment;
 
+import com.example.xproduct.view.HCHODialView;
+import com.example.xproduct.view.PMDialView;
 import com.hp.box.xproduct.R;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,15 +17,28 @@ public class DialFg extends Fragment {
 
 	private Context context;
 	private View view;
+	private PMDialView pm_dialv;
+	private HCHODialView hcho_dialv;
 
 	public static DialFg newInstance() {
 		DialFg fg = new DialFg();
 		return fg;
 	}
 
-	//
-	// public DialFg() {
-	// }
+	Handler handler = new Handler() {
+		@Override
+		public void dispatchMessage(Message msg) {
+			// TODO Auto-generated method stub
+			super.dispatchMessage(msg);
+			switch (msg.what) {
+			case 0:
+				// pm_dialv.setDialDegrees(0.7);
+				break;
+			default:
+				break;
+			}
+		}
+	};
 
 	public View getView(Context context) {
 		this.context = context;
@@ -50,6 +67,8 @@ public class DialFg extends Fragment {
 
 	private void findViewById() {
 		view = View.inflate(context, R.layout.dil_view, null);
+		pm_dialv = (PMDialView) view.findViewById(R.id.pm_dialv);
+		hcho_dialv = (HCHODialView) view.findViewById(R.id.hcho_dialv);
 	}
 
 	@Override
@@ -73,6 +92,7 @@ public class DialFg extends Fragment {
 	private void initView() {
 		findViewById();
 		setOnclickListener();
+		handler.sendEmptyMessage(0);
 	}
 
 }
