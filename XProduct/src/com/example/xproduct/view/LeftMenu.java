@@ -1,27 +1,34 @@
 package com.example.xproduct.view;
 
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import butterknife.InjectView;
 
-import com.example.xproduct.FullscreenActivity;
 import com.example.xproduct.aplication.XProductData;
+import com.example.xproduct.tool.qq.Utils;
 import com.hp.box.xproduct.R;
 
 public class LeftMenu {
 
 	private Context context;
-	private View view;
-	private ImageView user_img;
-	private LinearLayout xbox_lv, add_dv_ll, user_st_ll, user_pay_ll;
+	View view;
+	@InjectView(R.id.login_register_tv)
+	TextView login_register_tv;
+	@InjectView(R.id.add_dv_tv)
+	TextView add_dv_tv;
+	@InjectView(R.id.about_us_tv)
+	TextView about_us_tv;
+	@InjectView(R.id.user_buy_tv)
+	TextView user_buy_tv;
+	@InjectView(R.id.xbox_lv)
+	LinearLayout xbox_lv;
 	public static final int ADDDVINFOVIEW = 1, UPDATADVLISTSTATE = 2;
 
 	public LeftMenu(Context context) {
@@ -77,13 +84,17 @@ public class LeftMenu {
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
 			switch (v.getId()) {
-			case R.id.user_st_ll:
+			case R.id.login_register_tv:
+				new Utils().initQQLoginCondition(context);
+				new Utils().qqlogin();
+				break;
+			case R.id.about_us_tv:
 
 				break;
-			case R.id.user_pay_ll:
+			case R.id.user_buy_tv:
 
 				break;
-			case R.id.add_dv_ll:
+			case R.id.add_dv_tv:
 				handler.sendEmptyMessage(ADDDVINFOVIEW);
 				break;
 			default:
@@ -93,25 +104,26 @@ public class LeftMenu {
 	};
 
 	private void initView() {
-		findViewById();
+		view = View.inflate(context, R.layout.left_menu, null);
 		view.setLayoutParams(new RelativeLayout.LayoutParams(
 				XProductData.LEFTVIEWWIDTH, LayoutParams.FILL_PARENT));
+		findViewById();
 		setOnclickListener();
 	}
 
 	private void setOnclickListener() {
-		add_dv_ll.setOnClickListener(lis);
-		user_st_ll.setOnClickListener(lis);
-		user_pay_ll.setOnClickListener(lis);
+		login_register_tv.setOnClickListener(lis);
+		add_dv_tv.setOnClickListener(lis);
+		about_us_tv.setOnClickListener(lis);
+		user_buy_tv.setOnClickListener(lis);
 	}
 
 	private void findViewById() {
-		view = View.inflate(context, R.layout.left_menu, null);
-		user_img = (ImageView) view.findViewById(R.id.user_img);
+		login_register_tv = (TextView) view
+				.findViewById(R.id.login_register_tv);
+		add_dv_tv = (TextView) view.findViewById(R.id.add_dv_tv);
+		about_us_tv = (TextView) view.findViewById(R.id.about_us_tv);
+		user_buy_tv = (TextView) view.findViewById(R.id.user_buy_tv);
 		xbox_lv = (LinearLayout) view.findViewById(R.id.xbox_lv);
-		add_dv_ll = (LinearLayout) view.findViewById(R.id.add_dv_ll);
-		user_st_ll = (LinearLayout) view.findViewById(R.id.user_st_ll);
-		user_pay_ll = (LinearLayout) view.findViewById(R.id.user_pay_ll);
 	}
-
 }

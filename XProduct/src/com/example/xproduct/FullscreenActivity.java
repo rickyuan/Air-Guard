@@ -3,7 +3,8 @@ package com.example.xproduct;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.GestureDetector;
@@ -12,14 +13,19 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 import com.example.xproduct.adapter.ContentAdapter;
 import com.example.xproduct.aplication.XProductData;
+import com.example.xproduct.base.BaseFragmentActivity;
 import com.example.xproduct.util.BidirSlidingLayout;
 import com.example.xproduct.util.Utils;
 import com.example.xproduct.view.LeftMenu;
+import com.example.xproduct.view.ViewPagerTop;
 import com.hp.box.xproduct.R;
 
 /**
@@ -28,25 +34,43 @@ import com.hp.box.xproduct.R;
  * 
  * @see SystemUiHider
  */
-public class FullscreenActivity extends FragmentActivity implements
+public class FullscreenActivity extends BaseFragmentActivity implements
 		OnTouchListener {
 
 	private String TAG = "FullscreenActivity";
-	private Context context;
-	/**
-	 * ˫�򻬶��˵�����
-	 */
-	private BidirSlidingLayout xproduct_content;
+	private Context context;  
+	public static BidirSlidingLayout xproduct_content;
 	public ViewPager contentList;
 	private RelativeLayout left_menu;
 	private ContentAdapter vpAdapter;
 	public static int width;
 	public static int CURRENTPAGEITEM = 0;
+	public static final int SHOWLEFTV = 100;
+
+	Handler handler = new Handler() {
+		@Override
+		public void dispatchMessage(Message msg) {
+			// TODO Auto-generated method stub
+			super.dispatchMessage(msg);
+			switch (msg.what) {
+			case SHOWLEFTV:
+				if (!xproduct_content.isLeftLayoutVisible()) {
+					xproduct_content.initShowLeftState();
+					xproduct_content.scrollToLeftMenu();
+				}
+				break;
+
+			default:
+				break;
+			}
+		}
+	};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_fullscreen);
+		ButterKnife.inject(this);
 		context = this;
 		findViewById();
 		initView();

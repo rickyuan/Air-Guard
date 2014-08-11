@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.Paint.Align;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
@@ -95,6 +96,11 @@ public class HCHODialView extends SurfaceView implements Callback {
 							(int) (106 * (dialDegrees - 0.6625)), false, paint);
 				}
 			}
+			String dialDgStr = dialDegrees + "";
+			paint.setTextSize(30);
+			paint.setTextAlign(Align.CENTER);
+			canvas.drawText(dialDgStr, leftDialX + imgeW / 2, leftDialY + imgeH
+					/ 2, paint);
 		}
 	}
 

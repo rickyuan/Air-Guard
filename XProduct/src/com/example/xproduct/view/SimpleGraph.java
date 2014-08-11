@@ -45,10 +45,10 @@ public class SimpleGraph {
 		graphView.setTitleLeft("PM");
 		graphView.setTitleRight("¼×È©");
 		graphView.setGraphWidthPers(0.75);
-		new GraphViewSeriesStyle(R.color.blue,0);
+		new GraphViewSeriesStyle(R.color.blue, 0);
 		graphView.addSeries(exampleSeries1); // data
 		new GraphViewStyle(Color.BLACK, Color.BLACK);
-		new GraphViewSeriesStyle(R.color.orange,0);
+		new GraphViewSeriesStyle(R.color.orange, 0);
 		graphView.addSeries(exampleSeries2); // data
 		new GraphViewStyle(Color.BLACK, Color.BLACK);
 	}
@@ -58,7 +58,7 @@ public class SimpleGraph {
 		gvData2 = new GraphViewData[24];
 		double pm1 = 20;
 		for (int i = 0; i < 24; i++) {
-			pm1 +=20;
+			pm1 += 20;
 			gvData1[i] = new GraphViewData(i, pm1);
 		}
 		for (int i = 0; i < 24; i++) {

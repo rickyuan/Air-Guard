@@ -2,105 +2,100 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    android:background="@color/pm_cl_2"
     android:fillViewport="true" >
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@color/black_overlay"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:orientation="vertical" >
 
-        <ImageView
+        <com.example.xproduct.tool.image.SmartImageView
             android:id="@+id/user_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/ic_launcher" />
+            android:layout_marginTop="27dp"
+            android:background="@drawable/hp_logo" />
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/login_register_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="13dp"
-            android:orientation="horizontal" >
+            android:layout_marginTop="20dp"
+            android:drawableLeft="@drawable/left_lg_iv"
+            android:drawablePadding="23dp"
+            android:paddingBottom="7dp"
+            android:paddingTop="7dp"
+            android:text="账号登陆/注册"
+            android:textColor="@color/white"
+            android:textSize="23dp" />
 
-            <TextView
-                android:id="@+id/register"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="注册"
-                android:textColor="@android:color/white"
-                android:textSize="36dp" />
-
-            <TextView
-                android:layout_width="5dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="7dp"
-                android:layout_marginRight="7dp"
-                android:background="@android:color/white" />
-
-            <TextView
-                android:id="@+id/login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="登录"
-                android:textColor="@android:color/white"
-                android:textSize="36dp" />
-        </LinearLayout>
+        <com.example.xproduct.tool.image.SmartImageView
+            android:layout_width="fill_parent"
+            android:layout_height="0.6dp"
+            android:layout_marginBottom="3dp"
+            android:layout_marginTop="3dp"
+            android:background="@color/white" />
 
         <LinearLayout
             android:id="@+id/xbox_lv"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
             android:orientation="vertical" >
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/add_dv_ll"
+        <TextView
+            android:id="@+id/add_dv_tv"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:drawableLeft="@drawable/left_add_device_iv"
+            android:drawablePadding="23dp"
+            android:paddingBottom="7dp"
+            android:paddingTop="7dp"
+            android:text="添加新的设备"
+            android:textColor="@color/white"
+            android:textSize="23dp" />
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="30dp"
-                android:background="@android:color/darker_gray"
-                android:text="添加设备"
-                android:textColor="@android:color/white"
-                android:textSize="23dp" />
-        </LinearLayout>
+        <com.example.xproduct.tool.image.SmartImageView
+            android:layout_width="fill_parent"
+            android:layout_height="0.6dp"
+            android:layout_marginBottom="3dp"
+            android:layout_marginTop="3dp"
+            android:background="@color/white" />
 
-        <LinearLayout
-            android:id="@+id/user_st_ll"
+        <TextView
+            android:id="@+id/about_us_tv"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:drawableLeft="@drawable/left_about_iv"
+            android:drawablePadding="23dp"
+            android:paddingBottom="7dp"
+            android:paddingTop="7dp"
+            android:text="关于我们"
+            android:textColor="@color/white"
+            android:textSize="23dp" />
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="30dp"
-                android:background="@android:color/darker_gray"
-                android:text="用户设置"
-                android:textColor="@android:color/white"
-                android:textSize="23dp" />
-        </LinearLayout>
+        <com.example.xproduct.tool.image.SmartImageView
+            android:layout_width="fill_parent"
+            android:layout_height="0.6dp"
+            android:layout_marginBottom="3dp"
+            android:layout_marginTop="3dp"
+            android:background="@color/white" />
 
-        <LinearLayout
-            android:id="@+id/user_pay_ll"
+        <TextView
+            android:id="@+id/user_buy_tv"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="30dp"
-                android:background="@android:color/darker_gray"
-                android:text="购买设备"
-                android:textColor="@android:color/white"
-                android:textSize="23dp" />
-        </LinearLayout>
+            android:drawableLeft="@drawable/left_about_iv"
+            android:drawablePadding="23dp"
+            android:paddingBottom="7dp"
+            android:paddingTop="7dp"
+            android:text="购买 Air Guard"
+            android:textColor="@color/white"
+            android:textSize="23dp" />
     </LinearLayout>
 
 </ScrollView>

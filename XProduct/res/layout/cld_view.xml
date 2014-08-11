@@ -2,6 +2,78 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white" >
+    android:background="@drawable/fg_bg" >
+
+    <RelativeLayout
+        android:id="@+id/cld_top"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="center_vertical"
+        android:paddingBottom="10dp"
+        android:paddingTop="13dp" >
+
+        <com.example.xproduct.tool.image.SmartImageView
+            android:id="@+id/left_bt_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="13dp"
+            android:background="@drawable/top_left_bt_iv" />
+
+        <com.example.xproduct.tool.image.SmartImageView
+            android:id="@+id/setting_bt_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="13dp"
+            android:background="@drawable/top_setting_bt_iv" />
+
+        <com.example.xproduct.tool.image.SmartImageView
+            android:id="@+id/share_bt_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:layout_toLeftOf="@+id/setting_bt_iv"
+            android:background="@drawable/top_share_bt_iv" />
+
+        <TextView
+            android:id="@+id/top_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="按照日历查看"
+            android:textColor="@color/white"
+            android:textSize="15dp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/dil_srl_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cld_top"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal" >
+
+        <com.example.xproduct.tool.image.SmartImageView
+            android:id="@+id/dil_srl_iv_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY" />
+
+        <com.example.xproduct.tool.image.SmartImageView
+            android:id="@+id/dil_srl_iv_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:scaleType="fitXY" />
+
+        <com.example.xproduct.tool.image.SmartImageView
+            android:id="@+id/dil_srl_iv_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:scaleType="fitXY" />
+    </LinearLayout>
 
 </RelativeLayout>

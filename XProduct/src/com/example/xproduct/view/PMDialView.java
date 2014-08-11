@@ -8,16 +8,20 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.Paint.Align;
+import android.graphics.Paint.FontMetrics;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
+
 import com.hp.box.xproduct.R;
 
 @SuppressLint("ResourceAsColor")
 public class PMDialView extends SurfaceView implements Callback {
+	private Context context;
 	private SurfaceHolder holder;
 	private Paint paint;
 	private Canvas canvas;
@@ -32,6 +36,7 @@ public class PMDialView extends SurfaceView implements Callback {
 
 	public PMDialView(Context context, AttributeSet attrs) {
 		super(context, attrs);
+		this.context = context;
 		holder = getHolder();
 		holder.addCallback(this);
 		paint = new Paint();
@@ -96,6 +101,15 @@ public class PMDialView extends SurfaceView implements Callback {
 							(int) (106 * (dialDegrees - 0.6625)), false, paint);
 				}
 			}
+			// Typeface tf = Typeface.createFromAsset(context.getAssets(),
+			// "caiyun");
+			// paint.setTypeface(tf);
+			String dialDgStr = dialDegrees + "";
+			paint.setTextSize(30);
+			paint.setTextAlign(Align.CENTER);
+			FontMetrics fm = paint.getFontMetrics();
+			canvas.drawText(dialDgStr, leftDialX + imgeW / 2, leftDialY + imgeH
+					/ 2 + fm.top - fm.ascent, paint);
 		}
 	}
 
